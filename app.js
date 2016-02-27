@@ -67,33 +67,40 @@ var APP = function(){
                 $(".from").append($("<option>",{ value: hours[i],text:hours[i]}));
                 //$(".to").append($("<option>",{ value: hours[i],text:hours[i]}));
             }
+            this.buildTo();
         },
-        buildTo:function (){
-            var from = $(".from").val();
+        buildTo:function(){
             //9:00 o 9:30
+            $(".to").text("");//reset select
+            var from = $(".from").val();
             var max = 3;
 
             var hourParts = from.split(":");
+
             var hour = Number(hourParts[0]);
-            var minutes = Number(hourParts[1]);
+            var minutes = hourParts[1];
 
-            var to = hour + max;
+            var currentHour = hour;
 
-            for(var i = from; i < (from+max); i++){
-                var currentHour = hour+1;
+            //6 iteraciones
+            for(var i = 0; i < (max * 2) -1; i++){
 
-                
-
-                if(i == from && minutes > 0){
-                    $(".to").append($("<option>",{ value:(currentHour)+":00" ,text:(currentHour)+":00"}));
+                //Si da 0 es par.
+                if(i % 2 == 0){
+                    currentHour++;//Aumento una hora cada 2 media hora.
                 }
-                else if(i == from && minutes == 0){
-                    $(".to").append($("<option>",{ value:(currentHour)+":30" ,text:(currentHour)+":30"}));
-                }else {
-                    $(".to").append($("<option>",{ value:(currentHour)+":00" ,text:(currentHour)+":00"}));
-                    $(".to").append($("<option>",{ value:(currentHour)+":30" ,text:(currentHour)+":30"}));
+
+                $(".to").append($("<option>",{ value:currentHour+":"+minutes ,text:currentHour+":"+minutes}));
+
+                if(minutes > 0){
+                    minutes = "00";
+                }else{
+                    minutes = "30";
                 }
             }
+        },
+        guardarReservas:function(){
+            
         }
 
 
