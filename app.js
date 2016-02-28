@@ -90,20 +90,36 @@ var APP = function(){
                     currentHour++;//Aumento una hora cada 2 media hora.
                 }
 
-                $(".to").append($("<option>",{ value:currentHour+":"+minutes ,text:currentHour+":"+minutes}));
+                var minText = minutes == 0 ? "00" : "30";
+                $(".to").append($("<option>",{ value:currentHour+":"+minText ,text:currentHour+":"+minText}));
 
                 if(minutes > 0){
-                    minutes = "00";
+                    minutes = 0;
                 }else{
-                    minutes = "30";
+                    minutes = 30;
                 }
             }
         },
-        guardarReservas:function(){
-            
+        save:function(){
+            var from = $(".from").val();
+            var to = $(".to").val();
+
+            var name = $(".name").val();
+            var desc = $(".desc").val();
+
+            var hourFrom = from.split(":")[0];
+            hourFrom = Number(hourFrom);
+            var minutesFrom = from.split(":")[1];
+
+            var hourTo = to.split(":")[0];
+            hourTo = Number(hourTo);
+            var minutesTo = to.split(":")[1];
+
+            for(var i = hourFrom; i < hourTo; i++){
+                console.log("i",i);
+            }
+
         }
-
-
     };
 };
 

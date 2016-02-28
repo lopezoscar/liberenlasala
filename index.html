@@ -35,10 +35,10 @@
                     <div class="modal-body">
                         <div class="row">
                             <label>
-                                Nombre <input type="text" class="form-control" />
+                                Nombre <input type="text" class="form-control name" />
                             </label>
                             <label>
-                                Descripción <input type="text" class="form-control" />
+                                Descripción <input type="text" class="form-control desc" />
                             </label>
                         </div>
                         <div class="row">
@@ -51,14 +51,11 @@
                             </label>
                         </div>
 
-
-
-
                     </div>
                     <div class="modal-footer">
-
-                        <button type="button" class="btn btn-primary">Reservar</button>
                         <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="APP.save()">Reservar</button>
+
                     </div>
                 </div>
             </div>
