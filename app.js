@@ -18,6 +18,10 @@ var APP = function(){
             '</a>';
 
         var item = $(itemHTML);
+        item.attr("data-hour-number",hour.split(":")[0]);
+        item.attr("data-min-number",hour.split(":")[1]);
+        item.attr("data-fullhour",hour);
+
 
         $(item).find(".hour").text(hour);
         //$(item).find(".title").text("Practica Cancion");
@@ -113,11 +117,20 @@ var APP = function(){
 
             var hourTo = to.split(":")[0];
             hourTo = Number(hourTo);
-            var minutesTo = to.split(":")[1];
+            var minutesTo = Number(to.split(":")[1]);
 
-            for(var i = hourFrom; i < hourTo; i++){
+            var i;
+            for(i = hourFrom; i < hourTo; i++){
+                $('a[ data-hour-number="'+i+'" ]').addClass("active");
                 console.log("i",i);
             }
+
+            if(minutesTo > 0){
+                //Uso el último i (ultimo indice del for)
+                $('a[ data-fullhour="'+i+':00" ]').addClass("active");
+            }
+
+            $('#edit').modal('hide');
 
         }
     };
