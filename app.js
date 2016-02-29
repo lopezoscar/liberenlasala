@@ -73,6 +73,7 @@ var APP = function(){
             }
             this.buildTo();
         },
+
         buildTo:function(){
             //9:00 o 9:30
             $(".to").text("");//reset select
@@ -87,7 +88,7 @@ var APP = function(){
             var currentHour = hour;
 
             //6 iteraciones
-            for(var i = 0; i < (max * 2) -1; i++){
+            for(var i = 0; i < (max * 2) -1 && !_this.hours[currentHour+":00"].reservado && !_this.hours[currentHour+":30"].reservado  ; i++){
 
                 //Si da 0 es par.
                 if(i % 2 == 0){
@@ -122,12 +123,15 @@ var APP = function(){
             var i;
             for(i = hourFrom; i < hourTo; i++){
                 $('a[ data-hour-number="'+i+'" ]').addClass("active");
-                console.log("i",i);
+                _this.hours[i+":00"] = {reservado:true};
+                _this.hours[i+":30"] = {reservado:true};
+
             }
 
             if(minutesTo > 0){
                 //Uso el último i (ultimo indice del for)
                 $('a[ data-fullhour="'+i+':00" ]').addClass("active");
+                _this.hours[i+":00"] = {reservado:true};
             }
 
             $('#edit').modal('hide');
