@@ -33,15 +33,13 @@
                         <h4 class="modal-title" id="myModalLabel">Edita la info</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
+                        <div class="form-group">
                             <label>
-                                Nombre <input type="text" class="form-control name" />
+                                Nombre <input type="text" class="form-control name" required />
                             </label>
                             <label>
-                                Descripción <input type="text" class="form-control desc" />
+                                Descripción <input type="text" class="form-control desc" required/>
                             </label>
-                        </div>
-                        <div class="row">
                             <label>
                                 Desde
                                 <select onchange="APP.buildTo()" class="form-control from"></select>
@@ -50,12 +48,10 @@
                                 Hasta <select class="form-control to"></select>
                             </label>
                         </div>
-
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="APP.save()">Reservar</button>
-
+                        <button id="cancelBtn" type="button" class="btn btn-danger" onclick="APP.cancel()">Cancelar Reserva</button>
+                        <button id="saveBtn" type="button" class="btn btn-primary" onclick="APP.save()">Reservar</button>
                     </div>
                 </div>
             </div>
